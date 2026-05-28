@@ -1,6 +1,9 @@
 {
   "name": "Bridge Networking Demo",
-  "image": "mcr.microsoft.com/devcontainers/universal:5.1.5",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
   "forwardPorts": [8080, 8081],
   "postStartCommand": "docker compose up -d --build"
 }
