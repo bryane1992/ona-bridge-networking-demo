@@ -1,0 +1,24 @@
+# Docker Compose for the demo services.
+#
+# On Ona environments, bridge networking is broken by default because the
+# Docker daemon uses iptables-legacy while the VM firewall uses nftables.
+# Docker's bridge NAT rules are invisible to nft, so traffic can't route.
+#
+# This file uses bridge networking (the default) so that Docker DNS works
+# (frontend can resolve "backend" by container name). Without the
+# iptables-nft workaround, requests from frontend to backend will time out.
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8081:8081"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    environment:
+      - BACKEND_HOST=backend
+    depends_on:
+      - backend
