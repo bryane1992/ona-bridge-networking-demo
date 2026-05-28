@@ -5,5 +5,5 @@
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
   "forwardPorts": [8080, 8081],
-  "postStartCommand": "docker compose up -d --build"
+  "postStartCommand": "bash .devcontainer/fix-iptables.sh && docker compose up -d --build"
 }
