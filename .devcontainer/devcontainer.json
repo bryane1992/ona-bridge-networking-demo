@@ -1,6 +1,9 @@
 {
   "name": "Bridge Networking Demo (with workaround)",
-  "image": "mcr.microsoft.com/devcontainers/universal:5.1.5",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
   "forwardPorts": [8080, 8081],
   "postStartCommand": "bash .devcontainer/fix-iptables.sh && docker compose up -d --build"
 }
